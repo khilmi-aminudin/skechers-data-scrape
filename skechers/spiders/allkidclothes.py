@@ -19,6 +19,5 @@ class AllkidclothesSpider(scrapy.Spider):
             yield product
 
         next_page = response.css("a[title=Selanjutnya]::attr(href)").get()
-        print(f"Next page: {next_page}")
         if next_page is not None:
             yield response.follow(next_page, callback=self.parse)
