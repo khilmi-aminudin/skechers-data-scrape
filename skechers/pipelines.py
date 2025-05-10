@@ -11,14 +11,16 @@ from itemadapter import ItemAdapter
 from collections import defaultdict
 from openpyxl import load_workbook
 
+
 class SkechersPipeline:
     def process_item(self, item, spider):
         return item
 
+
 class ExcelMultiSheetPipeline:
     def __init__(self):
         self.data_per_spider = {}
-        self.file_path = 'output.xlsx'
+        self.file_path = "output.xlsx"
 
     def process_item(self, item, spider):
         if spider.name not in self.data_per_spider:
@@ -36,10 +38,12 @@ class ExcelMultiSheetPipeline:
         # sheet_name = self._get_unique_sheet_name(spider.name[:31]
 
         if self._file_exists(self.file_path):
-            with pd.ExcelWriter(self.file_path, engine='openpyxl', mode='a', if_sheet_exists='new') as writer:
+            with pd.ExcelWriter(
+                self.file_path, engine="openpyxl", mode="a", if_sheet_exists="new"
+            ) as writer:
                 df.to_excel(writer, sheet_name=sheet_name, index=False)
         else:
-            with pd.ExcelWriter(self.file_path, engine='openpyxl', mode='w') as writer:
+            with pd.ExcelWriter(self.file_path, engine="openpyxl", mode="w") as writer:
                 df.to_excel(writer, sheet_name=sheet_name, index=False)
 
     def _file_exists(self, file_path):

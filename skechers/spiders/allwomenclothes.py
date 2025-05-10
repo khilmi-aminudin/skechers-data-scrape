@@ -2,7 +2,6 @@ import scrapy
 from skechers.items import ProductItem
 
 
-
 class AllwomenclothesSpider(scrapy.Spider):
     name = "allwomenclothes"
     allowed_domains = ["www.skechers.id"]
@@ -12,10 +11,10 @@ class AllwomenclothesSpider(scrapy.Spider):
         for item in response.css("div.product-item-info"):
             product = ProductItem()
 
-            product["name"]= item.css("a.product-item-link::text").get().strip()
-            product["price"]= item.css("span.price::text").get()
-            product["image_url"]= item.css("img.product-image-photo::attr(src)").get()
-            product["product_url"]= item.css("a.product-item-link::attr(href)").get()
+            product["name"] = item.css("a.product-item-link::text").get().strip()
+            product["price"] = item.css("span.price::text").get()
+            product["image_url"] = item.css("img.product-image-photo::attr(src)").get()
+            product["product_url"] = item.css("a.product-item-link::attr(href)").get()
 
             yield product
 

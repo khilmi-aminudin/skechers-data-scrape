@@ -11,6 +11,7 @@ class SkechersItem(scrapy.Item):
     # name = scrapy.Field()
     pass
 
+
 class ProductItem(scrapy.Item):
     # Product name
     name = scrapy.Field()
