@@ -54,25 +54,3 @@ class ExcelMultiSheetPipeline:
             return True
         except Exception:
             return False
-
-    # def _get_unique_sheet_name(self, base_name):
-    #     """
-    #     Generate a unique sheet name if a sheet with the same name already exists in the file.
-    #     """
-    #     if not self._file_exists(self.file_path):
-    #         return base_name
-
-    #     try:
-    #         wb = load_workbook(self.file_path)
-    #         sheet_names = wb.sheetnames
-    #         if base_name not in sheet_names:
-    #             return base_name
-
-    #         i = 1
-    #         new_name = f"{base_name}_{i}"
-    #         while new_name in sheet_names and len(new_name) <= 31:
-    #             i += 1
-    #             new_name = f"{base_name}_{i}"
-    #         return new_name[:31]  # Ensure it doesn't exceed Excel limit
-    #     except Exception:
-    #         return base_name
